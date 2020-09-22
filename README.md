@@ -10,5 +10,5 @@ or
 
 ```
 mvn clean install spring-boot:repackage
-java -jar target/amq-client-0.0.1-SNAPSHOT.jar ssl://localhost:61617 user pass
+java -jar target/amq-client-0.0.2-SNAPSHOT.jar ssl://localhost:61617 user pass
 ```

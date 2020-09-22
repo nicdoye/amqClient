@@ -5,7 +5,7 @@
 
 	<groupId>org.alfresco</groupId>
 	<artifactId>amq-client</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>AMQ Client</name>
@@ -14,9 +14,9 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
+		<java.version>11</java.version>
 		<activemq-version>5.15.9</activemq-version>
-        <spring-boot-maven-plugin.version>2.0.3.RELEASE</spring-boot-maven-plugin.version>
+        <spring-boot-maven-plugin.version>2.3.4.RELEASE</spring-boot-maven-plugin.version>
 	</properties>
 	
 	<dependencies>
@@ -44,6 +44,14 @@
                 </configuration>
             </execution>
         </executions>
+    </plugin>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+            <release>11</release>
+        </configuration>
     </plugin>
     </plugins>
     </build>

@@ -12,7 +12,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 // mvn spring-boot:run -Dspring-boot.run.arguments="ssl://localhost:61617,username,password"
 // or
 // mvn clean install spring-boot:repackage
-// java -jar target/amq-client-0.0.1-SNAPSHOT.jar ssl://localhost:61617 user pass
+// java -jar target/amq-client-0.0.2-SNAPSHOT.jar ssl://localhost:61617 user pass
 
 // Based heavily on https://simplesassim.wordpress.com/2014/02/19/how-to-send-a-message-to-an-apache-activemq-topic-with-jms/
 
