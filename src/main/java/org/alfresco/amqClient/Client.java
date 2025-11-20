@@ -4,6 +4,7 @@ import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
 import javax.jms.Message;
+import javax.jms.MessageConsumer;
 import javax.jms.MessageProducer;
 import javax.jms.Session;
 import org.apache.activemq.ActiveMQConnectionFactory;
@@ -37,13 +38,25 @@ public class Client {
         try {
             final Connection connection = connectionFactory.createConnection(userName,password);
             final Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-            final Destination destination = session.createTopic("ASampleTopic");
+            final Destination destination = session.createQueue("test.queue");
             final MessageProducer messageProducer = session.createProducer(destination);
             final Message message = session.createTextMessage("Test Message");
 
             messageProducer.send(message);
-            System.out.println("Success!");
+            System.out.println("Message Sent!");
+            messageProducer.close();
 
+            final MessageConsumer messageConsumer = session.createConsumer(destination);
+
+            // loop over all messages in queue downloading and printing them
+            Message receivedMessage = messageConsumer.receive(1000);
+            while (receivedMessage != null) {
+                System.out.println("Received Message: " + receivedMessage);
+                receivedMessage = messageConsumer.receive(1000);
+            }
+
+            messageConsumer.close();
+            session.close();
             connection.close();
         } catch (javax.jms.JMSException e) {
             System.out.println("Oh dear");
